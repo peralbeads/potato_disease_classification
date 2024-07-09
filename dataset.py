@@ -12,17 +12,17 @@ class Dataset:
     IMG_SIZE = 256
     BATCH_SIZE = 32
     CHANNELS = 3 # rgb color
-    EPOCHS = 50
+    EPOCHS = 20
 
-    def __init__(self):
-        self.dataset = tf.keras.preprocessing.image_dataset_from_directory(
-            "PlantVillage",
-            shuffle=True,
-            image_size=(self.IMG_SIZE, self.IMG_SIZE),
-            batch_size=self.BATCH_SIZE
-        )
-        class_names = self.dataset.class_names
-        print(class_names)
+    dataset = tf.keras.preprocessing.image_dataset_from_directory(
+        "PlantVillage",
+        shuffle=True,
+        image_size=(IMG_SIZE, IMG_SIZE),
+        batch_size=BATCH_SIZE
+    )
+
+    class_names = dataset.class_names
+    print(class_names)
 
     def get_dataset(self):
         return self.dataset
@@ -95,7 +95,6 @@ class Dataset:
 dataset_instance = Dataset()
 train_ds, val_ds, test_ds = dataset_instance.prepare_data()
 resize_and_rescale, data_augmentation = Dataset.get_preprocessing_layers(dataset_instance.get_imgsize())
-
 
     # summary we loaded our data in tensorflow data set
     # visualisation not done
