@@ -12,7 +12,7 @@ class Dataset:
     IMG_SIZE = 256
     BATCH_SIZE = 32
     CHANNELS = 3 # rgb color
-    EPOCHS = 20
+    EPOCHS = 50
 
     dataset = tf.keras.preprocessing.image_dataset_from_directory(
         "PlantVillage",
